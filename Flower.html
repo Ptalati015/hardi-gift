@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love 🌹</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .title {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .bouquet {
+            position: relative;
+            display: inline-block;
+            animation: bouquetEntrance 2s ease-out 0.5s both;
+        }
+
+        .rose {
+            position: relative;
+            display: inline-block;
+            margin: 0 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .rose:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .rose-head {
+            width: 80px;
+            height: 80px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            margin-bottom: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            animation: bloom 1.5s ease-out;
+        }
+
+        .rose1 .rose-head {
+            background: linear-gradient(145deg, #ff6b9d, #ff8a9b);
+        }
+
+        .rose2 .rose-head {
+            background: linear-gradient(145deg, #ff4757, #ff6b9d);
+        }
+
+        .rose3 .rose-head {
+            background: linear-gradient(145deg, #ff6b9d, #ffa8b8);
+        }
+
+        .rose4 .rose-head {
+            background: linear-gradient(145deg, #ff4757, #ff3838);
+        }
+
+        
+
+        .rose-head::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 25px;
+            height: 25px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        .stem {
+            width: 6px;
+            height: 120px;
+            background: linear-gradient(to bottom, #4a7c59, #2d5016);
+            margin: 0 auto;
+            border-radius: 3px;
+            position: relative;
+            box-shadow: inset -2px 0 4px rgba(0,0,0,0.3);
+        }
+
+        .leaf {
+            position: absolute;
+            width: 30px;
+            height: 15px;
+            background: linear-gradient(45deg, #4a7c59, #7cb342);
+            border-radius: 50% 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .leaf:hover {
+            transform: scale(1.2);
+            filter: brightness(1.2);
+        }
+
+        .leaf1 { top: 30px; left: -20px; transform: rotate(-30deg); }
+        .leaf2 { top: 50px; right: -20px; transform: rotate(30deg); }
+        .leaf3 { top: 50px; left: -18px; transform: rotate(-45deg); }
+        .leaf4 { top: 30px; right: -16px; transform: rotate(45deg); }
+
+     .gift-card {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: #fff;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        z-index: 1000;
+        width: 90vw;
+        max-width: 340px;
+        text-align: center;
+        opacity: 0;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .gift-card.show {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    .gift-card h2 {
+        font-size: 1.6em;
+        background: linear-gradient(45deg, #ff6b9d, #667eea);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .gift-card p {
+        font-size: 1em;
+        color: #555;
+    }
+
+    .company-name {
+        font-size: 1.5em;
+        padding: 10px;
+        margin: 10px 0;
+        border: 2px solid #ff6b9d;
+        border-radius: 8px;
+        background: linear-gradient(45deg, #ff6b9d, #667eea);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 1.5em;
+        color: #aaa;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 107, 157, 0.3);
+            font-size: 20px;
+            animation: floatUp 8s infinite linear;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bouquetEntrance {
+            from { opacity: 0; transform: translateY(50px) scale(0.8); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes bloom {
+            0% { transform: scale(0) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+            100% { transform: scale(1) rotate(360deg); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2em;
+            }
+            
+            .rose {
+                margin: 0 8px;
+            }
+            
+            .rose-head {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .stem {
+                height: 100px;
+            }
+            
+            .gift-card {
+                padding: 30px 20px;
+            }
+            
+            .gift-card h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+          <audio id="audio11" src="audio/audio.mp3"></audio>
+
+    <div class="floating-hearts" id="heartsContainer"></div>
+    
+    <div class="container">
+        <h1 class="title">Happy Birthday Beautiful! 💕</h1>
+        
+        <div class="bouquet">
+            <div class="rose rose1">
+                <div class="rose-head"></div>
+                <div class="stem">
+                    <div class="leaf leaf1" 
+                    onclick="showGiftCard('Zara', 'Enjoy a special shopping spree!', 'Exclusive discounts just for you!', 'Fashion items of your choice', 'A surprise gift awaits you!')"></div>
+
+                    <div class="leaf leaf2" 
+                    onclick="showGiftCard('CadBury Chocolates','Enjoy a sweet treat', 'Delicious chocolates just for you!', 'Indulge in your favorite flavors', 'A special gift awaits!')">
+                  </div>
+                </div>
+            </div>
+            
+            <div class="rose rose2">
+                <div class="rose-head"></div>
+                <div class="stem">
+                    <div class="leaf leaf3" 
+                    onclick="showGiftCard('H&M', 'A stylish shopping spree', 'Trendy outfits just for you!', 'Shop your favorite styles', 'A special gift awaits!')"></div>
+
+                    <div class="leaf leaf4" 
+                    onclick="showGiftCard('Birthday Box', 'A special birthday box just for you!', 'Filled with surprises', 'Enjoy your special day', 'A gift to remember!')">
+                  </div>
+                </div>
+            </div>
+            
+            <div class="rose rose3">
+                <div class="rose-head"></div>
+                <div class="stem">
+                    <div class="leaf leaf1" onclick="showGiftCard('Sephora', 
+                    'Enjoy a relaxing day and grab your favorites with this exclusive gift card!','Perfumes & cosmetics','Skincare & beauty products','Makeup & more')">
+                    </div>
+                    <div class="leaf leaf2" onclick="showGiftCard('Summer Dress',
+                    'A beautiful summer dress just for you!', 'Perfect for sunny days', 'Stylish and comfortable', 'A special gift awaits!'
+                    )"></div>
+                </div>
+            </div>
+            
+            <div class="rose rose4">
+                <div class="rose-head"></div>
+                <div class="stem">
+                    <div class="leaf leaf1" onclick="showGiftCard('Holister', 'A stylish shopping spree', 'Trendy outfits just for you!', 'Shop your favorite styles', 'A special gift awaits!')">
+                    <div class="leaf leaf4" onclick="showGiftCard('❤️', 'Happy Birthday My Janiye', 'I love You So Much', 'Your are Amazing', 'You are the best thing that ever happened to me')"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="hideGiftCard()"></div>
+    
+    <div class="gift-card" id="giftCard">
+    <button class="close-btn" id="closeGiftCardBtn" onclick="hideGiftCard()">&times;</button>
+    <h2 id="giftCardTitle">🎁 Special Birthday Surprise! 🎁</h2>
+    <p id="giftCardIntro">Your love deserves the very best</p>
+    <div class="company-name" id="companyName">Luxe Spa & Wellness</div>
+    <p id="giftCardLine1">Enjoy a relaxing day at the spa with this exclusive gift card!</p>
+    <p id="giftCardLine2">✨ Full day spa treatment</p>
+    <p id="giftCardLine3">💆‍♀️ Massage & facial included</p>
+    <p id="giftCardLine4">🥂 Champagne & treats</p>
+    <p id="giftCardClosing" style="margin-top: 30px; font-style: italic; color: #ff6b9d;">
+        Happy Birthday, my love! You deserve to be pampered. 💕
+    </p>
+</div>
+
+
+    <script>
+       const audio = document.getElementById('audio11');
+          if (audio) {
+            audio.currentTime = 0;
+            audio.play();
+          }
+       function showGiftCard( company, line1, line2, line3, line4) {
+    // Set each element's content before showing the card
+
+    document.getElementById('companyName').textContent = company;
+    document.getElementById('giftCardLine1').textContent = line1;
+    document.getElementById('giftCardLine2').textContent = line2;
+    document.getElementById('giftCardLine3').textContent = line3;
+    document.getElementById('giftCardLine4').textContent = line4;
+
+    // Show the overlay and gift card
+    document.getElementById('overlay').classList.add('show');
+    document.getElementById('giftCard').classList.add('show');
+}
+
+        function hideGiftCard() {
+            document.getElementById('overlay').classList.remove('show');
+            document.getElementById('giftCard').classList.remove('show');
+        }
+
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💕';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.getElementById('heartsContainer').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        // Create hearts periodically
+        setInterval(createHeart, 1000);
+
+        // Initial hearts
+        for(let i = 0; i < 5; i++) {
+            setTimeout(createHeart, i * 200);
+        }
+
+        // Add touch feedback for mobile
+        document.querySelectorAll('.leaf').forEach(leaf => {
+            leaf.addEventListener('touchstart', function() {
+                this.style.transform += ' scale(0.9)';
+            });
+            
+            leaf.addEventListener('touchend', function() {
+                this.style.transform = this.style.transform.replace(' scale(0.9)', '');
+            });
+        });
+    </script>
+</body>
+</html>

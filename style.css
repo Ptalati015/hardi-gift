@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
+
+*
+{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1em;
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.top-title, .bottom-title {
+  font-family: 'Chango', cursive;
+  color: #ff0077;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.top-title {
+  font-size: 2.5em;
+  margin-bottom: 1em;
+}
+
+.bottom-title {
+  font-size: 2.2em;
+  margin-top: 1em;
+}
+
+/* Optional for extra responsiveness */
+@media (max-width: 400px) {
+  .top-title, .bottom-title {
+    font-size: 2em;
+  }
+  .cake {
+    transform: scale(0.85);
+  }
+}
+
+.styled-button-link {
+  text-decoration: none;
+  margin-top: 1.5em;
+}
+
+.styled-button {
+  font-family: 'Chango', cursive;
+  background: linear-gradient(to right, #ff69b4, #ff1493);
+  color: white;
+  border: none;
+  padding: 0.8em 2em;
+  border-radius: 2em;
+  font-size: 1.2em;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.styled-button:hover {
+  background: linear-gradient(to right, #ff1493, #ff69b4);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+.cake
+{	
+	font-size: 2vmin;
+	/*  font-size: 25px; */
+	height: 44em;
+	width: 44em;
+	position: relative;
+	
+	background:
+		
+		/* age flames */
+		radial-gradient( ellipse 50% 50%,
+			#fccfa2 33%,
+			#ffb564 66%,
+			#ffa233 95%, 
+			transparent 105% 
+		) left 7.5em top 3em / 1.8em 4em,
+		
+		radial-gradient( ellipse 50% 50%,
+			#fccfa2 33%,
+			#ffb564 66%,
+			#ffa233 95%, 
+			transparent 105% 
+		) left 15.5em top 3em / 1.8em 4em,
+		/* cherry */
+radial-gradient(circle 1em, 
+  #fff 90%, transparent 100%
+) right 14em top 8.5em / 2em 2em,
+
+radial-gradient(circle 3.5em, 
+  #8b0000 95%, transparent 100%  /* Deep cherry red */
+) right 10em top 7.5em / 7em 7em,
+
+radial-gradient(circle 3em at 110% 100%, 
+  transparent 80%,
+  #145a32 85%, #145a32 95%,     /* Rich leafy stem green */
+  transparent 100%
+) right 11.5em top 3em / 6em 6em,
+
+		
+		/* candle flame */
+		radial-gradient( ellipse 50% 50%,
+			#fccfa2 33%,
+			#ffb564 66%,
+			#ffa233 95%, 
+			transparent 105% 
+		) right 15.65em top 1em / 1.8em 4em,
+		
+		linear-gradient(0deg,
+  #3e2723 12.5%,            /* Dark chocolate */
+  #fff 12.5%, #fff 25%,     /* Whipped cream */
+  #3e2723 25%, #3e2723 37.5%,
+  #fff 37.5%, #fff 50%,
+  #3e2723 50%, #3e2723 62.5%,
+  #fff 62.5%, #fff 75%,
+  #3e2723 75%, #3e2723 87.5%,
+  #fff 87.5%
+		) right 15em top 5.2em / 3em 8em,
+		
+	linear-gradient(0deg, 
+  #3e2723 33%,    /* Dark chocolate layer */
+  #fff 33%,       /* Whipped cream */
+  #3e2723 66%,    /* Another chocolate layer */
+  #fff 66%        /* Whipped cream top */
+) left 0 bottom 0 / 100% 50%;
+	
+	background-repeat: no-repeat;
+/* 	border: 1em solid #660805; */
+	border-radius: 4em;
+	filter: drop-shadow( 0 0 1em rgba( 0,0,0,.2 ) );
+/* 	box-shadow: 0 0 0 1em #660805 inset; */
+}
+
+.cake::before,
+.cake::after
+{
+	content: '';
+	display: block;
+}
+
+.cake::before
+{
+	width: 105%;
+	height: 46%;
+	left: -2.5%;
+	top: 30%;
+	position: absolute;
+	border-radius: 5em;
+	background: 
+		
+		/* center-left circle */
+		radial-gradient( circle 2.1em at 50% 0, #FFF 99%, transparent 100% ) left 14em bottom 7em / 4.15em 3em,
+		linear-gradient( #3e2723  , #3e2723   ) left 14em bottom 5em / 4.5em 5em,
+		radial-gradient( circle 2em at 50% 100%, #fccb9d  99%, transparent 100% ) left 10em bottom 12em / 4em 3em,
+		linear-gradient( #3e2723  , #3e2723   ) left 10em bottom 5em / 4em 7em,
+		
+		/* center-right circle */
+		radial-gradient( circle 3em at 50% 0, #FFF 99%, transparent 100% ) right 16em bottom 2.1em / 6em 3em,
+		radial-gradient( circle 3em at 50% 100%, #fccb9d  99%, transparent 100% ) right 22em bottom 12em / 6em 3em,
+		linear-gradient( #3e2723 , #3e2723  ) right 22em bottom 5em / 6em 7em,
+		
+		/* bottom right circle */
+		linear-gradient( #3e2723, #3e2723 ) right 8em bottom 5em / 8em 5em,
+		radial-gradient( circle 4em at 50% 100%, #fccb9d 99%, transparent 100% ) right 8em bottom 10em / 8em 4em,
+		radial-gradient( circle 4.05em at right 4em bottom 5em, #FFF 99%, transparent 100% ),
+		
+		/* bottom left circle */
+		radial-gradient( circle 5em at left 5em bottom 5em, #FFF 99%, transparent 100% ),
+		
+		/* backgruond */
+		linear-gradient( #FFF, #FFF ) 0 0 / 100% 75%;
+	
+	background-repeat: no-repeat;
+}
+
+.cake::after
+{
+	content: '20';
+	position: absolute;
+	top: 11%;
+	left: 10%;
+	font-size: 9em;
+	font-family: Chango;
+	color: #ff889c;
+	text-shadow: 
+		.1em 0em 0 #ffe6e6,
+		0 0em .3em rgba( 0,0,0,.4 );
+}
+
+/* Flickering flame */
+@keyframes flicker {
+  0%, 100% {
+    transform: scaleY(1) scaleX(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(1.1) scaleX(0.9);
+    opacity: 0.8;
+  }
+}
+
+/* Floating cherry */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.5em);
+  }
+}
+
+/* Bouncing number */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.2em);
+  }
+}
+
+/* Cake subtle bob */
+@keyframes bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.3em);
+  }
+}
+
+/* Apply flame animation to the flames */
+@keyframes flameFlicker {
+  0%, 100% {
+    background-position:
+      left 7.5em top 3em,
+      left 15.5em top 3em,
+      right 14em top 8.5em,
+      right 10em top 7.5em,
+      right 11.5em top 3em,
+      right 15.65em top 1em,
+      right 15em top 5.2em,
+      left 0 bottom 0;
+  }
+  50% {
+    background-position:
+      left 7.55em top 2.95em,
+      left 15.45em top 3.05em,
+      right 14em top 8.5em,
+      right 10em top 7.5em,
+      right 11.5em top 3em,
+      right 15.6em top 1.05em,
+      right 15em top 5.2em,
+      left 0 bottom 0;
+  }
+}
+
+.cake {
+  animation: flameFlicker 0.9s infinite ease-in-out;
+}
+
+
+/* You can also animate flame with filter + blur if converted to pseudo-elements or extra divs */

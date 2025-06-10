@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Birthday Collage Timeline</title>
+    <style>
+      body {
+        margin: 0;
+        background: linear-gradient(135deg, #ff63c9, #ffb3f0);
+        font-family: "Comic Sans MS", cursive;
+        overflow-x: hidden;
+      }
+
+      .confetti {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1000;
+      }
+
+      .timeline {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .card-container {
+        flex: 0 0 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        scroll-snap-align: start;
+        perspective: 1200px;
+      }
+
+      .card {
+        width: 90vw;
+        max-width: 400px;
+        height: 80vh;
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transform-style: preserve-3d;
+        transition: transform 0.8s ease;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .card.is-flipped {
+        transform: rotateY(180deg);
+      }
+
+      .card-face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        backface-visibility: hidden;
+      }
+
+      .card-front {
+        background-size: cover;
+        background-position: center;
+      }
+
+      .card-back {
+        background: white;
+        color: #ff69b4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        transform: rotateY(180deg);
+        font-size: 1.4rem;
+        text-align: center;
+        box-sizing: border-box;
+      }
+      .styled-button-link {
+  text-decoration: none;
+  margin-top: 1.5em;
+}
+
+.styled-button {
+  font-family: 'Chango', cursive;
+  background: linear-gradient(to right, #ff69b4, #ff1493);
+  color: white;
+  border: none;
+  padding: 0.8em 2em;
+  border-radius: 2em;
+  font-size: 1.2em;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.styled-button:hover {
+  background: linear-gradient(to right, #ff1493, #ff69b4);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+    </style>
+  </head>
+  <body>
+    <canvas class="confetti"></canvas>
+
+    <div class="timeline" id="timeline">
+      <div class="card-container">
+        <div
+          class="card"
+          onclick="flipCard(this, 'audio1')"
+          style="background-color: #ffe6f0"
+        >
+          <div
+            class="card-face card-front"
+            style="background-image: url('images/hardi-flower.jpg')"
+          ></div>
+          <div class="card-face card-back">
+            <p>
+              Happy Birthday Babsies! 💖<br />I’m sorry I’m not there, but you
+              are loved and appreciated.<br />You are PERFECT!
+            </p>
+          </div>
+        </div>
+        <audio id="audio1" src="audio/card1.mp3"></audio>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card-container">
+        <div
+          class="card"
+          onclick="flipCard(this, 'audio2')"
+          style="background-color: #d6f0ff"
+        >
+          <div
+            class="card-face card-front"
+            style="background-image: url('images/hardi-4.jpg')"
+          ></div>
+          <div class="card-face card-back">
+            <p>
+              Every memory with you is magical ✨ I love you lotsss. I am the
+              luckiest Man Alive! Thank you for being amazing. This day my life
+              was born HEHE.
+            </p>
+          </div>
+        </div>
+        <audio id="audio2" src="audio/card2.mp3"></audio>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card-container">
+        <div
+          class="card"
+          onclick="flipCard(this, 'audio3')"
+          style="background-color: #ffe6f0"
+        >
+          <div
+            class="card-face card-front"
+            style="background-image: url('images/Hardi-2.jpg')"
+          ></div>
+          <div class="card-face card-back">
+            <p>
+              Today is your day! 🎉 I want to take the moment and celebrate
+              Hardi. You are powerful, strong, intelligent, and soo talented. I
+              am truly honored to have met someone as amazing and perfect. I am
+              proud of you every single day!!
+            </p>
+          </div>
+        </div>
+        <audio id="audio3" src="audio/card3.mp3"></audio>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card-container">
+        <div
+          class="card"
+          onclick="flipCard(this, 'audio4')"
+          style="background-color: #ffe6f0"
+        >
+          <div
+            class="card-face card-front"
+            style="background-image: url('images/Hardi-3.jpg')"
+          ></div>
+          <div class="card-face card-back">
+            <p>
+              Your smile lights up the world 🌟<br />
+              Hardi Words Cannot Express How perfect you are!
+            </p>
+          </div>
+        </div>
+        <audio id="audio4" src="audio/card4.mp3"></audio>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card-container">
+        <div
+          class="card"
+          onclick="flipCard(this, 'audio5')"
+          style="background-color: #ffe6f0"
+        >
+          <div
+            class="card-face card-front"
+            style="background-image: url('images/Hardi-1.jpg')"
+          ></div>
+          <div class="card-face card-back">
+            <p>
+              Life has Brought you lots of ups and downs but today forget about
+              all that.<br />
+              THIS IS YOUR DAYY BABYYY. YOU ARE GOD DAMN Perfect.
+            </p>
+          </div>
+        </div>
+        <audio id="audio5" src="audio/card5.mp3"></audio>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card-container">
+        <div
+          class="card"
+          onclick="flipCard(this, 'audio6')"
+          style="background-color: #ffe6f0"
+        >
+          <div
+            class="card-face card-front"
+            style="background-image: url('images/Hardi-5.jpg')"
+          ></div>
+          <div class="card-face card-back">
+            <p>
+              I’m grateful for you everyday 💫<br />
+              I promise that me wil always love you support you, and be there
+              for you in every situation.<br />
+              I dedicate my whole life to you. Life has been hard on you however
+              whatever it throws at you I promise to never leave your side my
+              bacha. TOGETHER WE GOT THISSS HEHE.
+            </p>
+          </div>
+        </div>
+        <audio id="audio6" src="audio/card6.mp3"></audio>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="card-container">
+        <div
+          class="card"
+          onclick="flipCard(this, 'audio7')"
+          style="background-color: #ffe6f0"
+        >
+          <div
+            class="card-face card-front"
+            style="background-image: url('images/Hardi-pose.jpg')"
+          ></div>
+          <div class="card-face card-back">
+            <p>
+              BABY YOU ARE SO GORGEOUS SO BEAUTIFUL SO HOTT SOOO SEXYYYYYY SO
+              HOTSIES SO SCRUMPTIOUS NEVER DOUBT YOUR BEAUTY BECAUSE YOU ARE THE
+              MOST PRETTIEST HOTTEST PERSON IN the Universe.
+            </p>
+          </div>
+        </div>
+        <audio id="audio7" src="audio/card7.mp3"></audio>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="card-container">
+        <div
+          class="card"
+          onclick="flipCard(this, 'audio8')"
+          style="background-color: #ffe6f0"
+        >
+          <div
+            class="card-face card-front"
+            style="background-image: url('images/ghibli-style.jpg')"
+          ></div>
+          <div class="card-face card-back">
+            <p>
+              I remember the day I was sad and I missed you. You surprised me
+              with masterpiece. This symbolizes how amazing you are<br />
+              You will always own my heart and my soul and my everything. Hardi
+              I can ramble on how amazing you are, just know in my heart theres
+              only love for you and no one else. On your Birthday I wish you not
+              only happiness but a lifetime of smiles laughter and joy and
+              fulfillment All your wishes will come true. Together Forever MY
+              Babsies.
+            </p>
+          </div>
+        </div>
+        <audio id="audio8" src="audio/card8.mp3"></audio>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="card-container">
+        <div
+          class="card"
+          onclick="flipCard(this, 'audio10')"
+          style="background-color: #ffe6f0"
+        >
+          <div
+            class="card-face card-front"
+            style="background-image: url('images/hardi-7.jpg')"
+          ></div>
+          <div class="card-face card-back">
+            <p>
+              While this concert had many ups and downs and stress. Baby this
+              was our first concert Together hehe. Yes travis scott was funsies
+              and the weekend was great but what made thus concert special was
+              you my Hardi. Your presence your voice, you dance, your ada oof my
+              Baby you bring joy and happiness everywhere you go hehe. I love
+              you lots soo much.
+            </p>
+          </div>
+        </div>
+        <audio id="audio10" src="audio/card10.mp3"></audio>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="card-container">
+        <div
+          class="card"
+          onclick="flipCard(this, 'audio9')"
+          style="background-color: #ffe6f0"
+        >
+          <div
+            class="card-face card-front"
+            style="background-image: url('images/hardi-6.jpg')"
+          ></div>
+          <div class="card-face card-back">
+            <p>
+              Hardi I am Forever cheering you on 🎈 Again Me is very sorry me
+              not there right now Me hope this gift brought a smile on your
+              BEAUTIFUL face. You are incredible and I appreciate you soo much.
+              This day and last monday hold a special place in my heart This is when
+              I fell in love with you again hehe. Our bond is INCREDIBLE. Life
+              may not be perfect but Hardi you dont have to deal with everything
+              alone HAPPY BIRTHDAY MY SONIYE MY WIFEY MY BEST FRIEND MY
+              GIRLFIEND
+            </p>
+          </div>
+        </div>
+        <audio id="audio9" src="audio/card9.mp3"></audio>
+      </div>
+
+      <!-- Card 11 flowers -->
+      <div class="card-container">
+        <div
+          class="card"
+          onclick="flipCard(this, 'audio11')"
+          style="background-color: #ffe6f0"
+        >
+          <div
+            class="card-face card-front"
+            style="background-image: url('images/Flowers2.jpg')"
+          ></div>
+          <div class="card-face card-back">
+            <a href="./Flower.html" class="styled-button-link">
+              <input type="button" value="HEHE" class="styled-button" />
+            </a>
+          </div>
+        </div>
+        <audio id="audio11" src="audio/audio.mp3"></audio>
+      </div>
+    </div>
+
+    <script>
+      function flipCard(cardEl, audioId) {
+        // Reset all other cards
+        document.querySelectorAll(".card").forEach((card) => {
+          if (card !== cardEl) card.classList.remove("is-flipped");
+        });
+
+        // Stop all audios
+        document.querySelectorAll("audio").forEach((audio) => {
+          audio.pause();
+          audio.currentTime = 0;
+        });
+
+        const isFlippingToBack = !cardEl.classList.contains("is-flipped");
+        if (isFlippingToBack) {
+          cardEl.classList.add("is-flipped");
+          const audio = document.getElementById(audioId);
+          if (audio) {
+            audio.currentTime = 0;
+            audio.play();
+          }
+        } else {
+          cardEl.classList.remove("is-flipped");
+          const audio = document.getElementById(audioId);
+          if (audio) {
+            audio.pause();
+            audio.currentTime = 0;
+          }
+        }
+      }
+      // Confetti
+      const canvas = document.querySelector(".confetti");
+      const ctx = canvas.getContext("2d");
+      let pieces = [];
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      function initConfetti() {
+        pieces = [];
+        for (let i = 0; i < 150; i++) {
+          pieces.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 8 + 4,
+            color: ["#ffb3f0", "#68c7ec"][
+              Math.floor(Math.random() * 3)
+            ],
+            weight: Math.random() * 1 + 0.5,
+            dx: Math.random() - 0.5,
+          });
+        }
+      }
+
+      function drawConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let p of pieces) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+          p.y += p.weight;
+          p.x += p.dx;
+
+          if (p.y > canvas.height) {
+            p.y = 0;
+            p.x = Math.random() * canvas.width;
+          }
+        }
+        requestAnimationFrame(drawConfetti);
+      }
+
+      window.addEventListener("resize", resize);
+      resize();
+      initConfetti();
+      drawConfetti();
+    </script>
+  </body>
+</html>
